@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to right, #f8e71c, #2af598);
+            /* Gradient background */
+            transition: background 1s ease;
+            /* Slower background color transition */
+        }
+
+        .container {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            /* Semi-transparent white background */
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .header_text {
+            font-family: "Nunito", sans-serif;
+            font-size: 30px;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .gif_container img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .btn {
+            background: linear-gradient(to right, #017cff, #8d0101);
+            color: white;
+            font-weight: bold;
+            padding: 15px 32px;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 12px;
+            transition: background 0.3s ease;
+            /* Smooth button color transition */
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            background: linear-gradient(to right, #8d0101, #017cff);
+        }
+
+        #noButton {
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            /* Smooth button movement and fade-out */
+        }
+
+        .btn:hover#noButton {
+            transform: translateX(50px);
+            opacity: 0;
+        }
+
+        p {
+            color: #333;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        p a {
+            color: #017cff;
+            font-weight: bold;
+            opacity: 0.75;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="header_text">Shraddha, will you make me the happiest person in the world and be my forever?</h1>
+        <div class="gif_container">
+            <img src="https://i.postimg.cc/pdNqPxx1/milk-and-mocha-cute.gif" alt="Cute animated illustration" />
+        </div>
+        <div class="buttons">
+            <button class="btn" id="yesButton" onclick="nextPage()">Yes</button>
+            <button class="btn" id="noButton" onmouseover="moveButton()" onclick="moveButton()">No</button>
+        </div>
+    </div>
+
+    <script>
+        function nextPage() {
+            window.location.href = "yes.html";
+        }
+
+        function moveButton() {
+            var x =
+                Math.random() *
+                (window.innerWidth -
+                    document.getElementById("noButton").offsetWidth);
+            var y =
+                Math.random() *
+                (window.innerHeight -
+                    document.getElementById("noButton").offsetHeight);
+            document.getElementById("noButton").style.left = `${x}px`;
+            document.getElementById("noButton").style.top = `${y}px`;
+        }
+        // Automatic background color change every second
+        setInterval(function () {
+            changeBackgroundColor();
+        }, 1000);
+
+        function changeBackgroundColor() {
+            var randomColor = getRandomColor();
+            document.body.style.background = `linear-gradient(to right, ${randomColor}, #2af598)`;
+        }
+
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    </script>
+</body>
+
+</html>
